@@ -14,9 +14,9 @@ namespace MvcMovie.Controllers
         /// L'action par défaut est toujours valorisé par la méthode Index()
         /// </summary>
         /// <returns></returns>
-        public string Index()
+        public ActionResult Index()
         {
-            return "This is my <b>default</b> action...";
+            return View();
         }
 
         // NB : Pas de surcharge possible des Actions
@@ -44,7 +44,6 @@ namespace MvcMovie.Controllers
         {
             return HttpUtility.HtmlEncode("Hello " + name + ", NumTime is: " + numTimes);
         }
-        */
 
         /// <summary>
         /// Action Welcome avec un paramètre id et une query string
@@ -56,6 +55,22 @@ namespace MvcMovie.Controllers
         public string Welcome(string name, int id = 1)
         {
             return HttpUtility.HtmlEncode("Hello " + name + ", ID: " + id);
+        }
+        */
+
+        /// <summary>
+        /// Action Welcome avec un paramètre name et numTimes.
+        /// GET : /HelloWorld/Welcome/MarkAttack/51
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="numTimes"></param>
+        /// <returns></returns>
+        public ActionResult Welcome(string name, int numTimes = 1)
+        {
+            ViewBag.Message = "Hello " + name;
+            ViewBag.NumTimes = numTimes;
+
+            return View();
         }
     }
 }
